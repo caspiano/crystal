@@ -228,7 +228,7 @@ def Enum.new(ctx : YAML::ParseContext, node : YAML::Nodes::Node)
   if value = string.to_i64?
     from_value(value)
   else
-    parse(string)
+    parse(string.camelcase)
   end
 end
 

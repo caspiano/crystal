@@ -248,7 +248,7 @@ def Enum.new(pull : JSON::PullParser)
   when .int?
     from_value(pull.read_int)
   when .string?
-    parse(pull.read_string)
+    parse(pull.read_string.camelcase)
   else
     raise "Expecting int or string in JSON for #{self.class}, not #{pull.kind}"
   end

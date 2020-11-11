@@ -191,6 +191,8 @@ describe "YAML serialization" do
     it "does for Enum with string" do
       YAMLSpecEnum.from_yaml(%("One")).should eq(YAMLSpecEnum::One)
 
+      YAMLSpecEnum.from_yaml(%("one")).should eq(YAMLSpecEnum::One)
+
       expect_raises(ArgumentError, "Unknown enum YAMLSpecEnum value: Three") do
         YAMLSpecEnum.from_yaml(%("Three"))
       end

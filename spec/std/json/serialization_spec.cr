@@ -186,6 +186,8 @@ describe "JSON serialization" do
     it "does for Enum with string" do
       JSONSpecEnum.from_json(%("One")).should eq(JSONSpecEnum::One)
 
+      JSONSpecEnum.from_json(%("one")).should eq(JSONSpecEnum::One)
+
       expect_raises(ArgumentError, "Unknown enum JSONSpecEnum value: Three") do
         JSONSpecEnum.from_json(%("Three"))
       end
@@ -395,7 +397,7 @@ describe "JSON serialization" do
     end
 
     it "does for Enum" do
-      JSONSpecEnum::One.to_json.should eq("1")
+      JSONSpecEnum::One.to_json.should eq(%("one"))
     end
 
     pending_win32 "does for BigInt" do

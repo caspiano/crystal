@@ -123,7 +123,7 @@ end
 
 struct Enum
   def to_yaml(yaml : YAML::Nodes::Builder)
-    yaml.scalar value
+    yaml.scalar to_s.downcase
   end
 end
 
